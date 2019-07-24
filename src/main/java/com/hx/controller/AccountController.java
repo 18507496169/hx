@@ -33,6 +33,7 @@ public class AccountController {
     @ApiOperation(value = "根据单个用户ID查询用户", httpMethod = "GET", notes = "查询用户", response = Boolean.class)
     @RequestMapping(value = "selectById", method = RequestMethod.GET)
     public Account selectById(Long accountId) {
-        return accountMapper.selectById(accountId);
+//        return accountMapper.selectById(accountId);
+        return null;
     }
 }
