@@ -1,10 +1,14 @@
 package com.hx.domain;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 
 /**
- * @author
+ * @author hch
  */
+@ApiModel(value = "用户管理")
 public class Account implements Serializable {
 
     private static final long serialVersionUID = 1563948503656L;
@@ -15,78 +19,91 @@ public class Account implements Serializable {
      * <p>
      * isNullAble:0
      */
+    @ApiModelProperty(value = "账号ID，更新、查询、删除的时候需要传入该ID")
     private Long id;
 
     /**
      * 密码
      * isNullAble:0
      */
+    @ApiModelProperty(value = "密码")
     private String password;
 
     /**
      * 用户名
      * isNullAble:1
      */
+    @ApiModelProperty(value = "用户名")
     private String accountName;
 
     /**
      * 手机号
      * isNullAble:0
      */
-    private Integer mobilePhone;
+    @ApiModelProperty(value = "手机号")
+    private Long mobilePhone;
 
     /**
      * 邮箱账号
      * isNullAble:1,defaultVal:
      */
+    @ApiModelProperty(value = "邮箱")
     private String email;
 
     /**
      * 联系人姓名
      * isNullAble:1,defaultVal:
      */
+    @ApiModelProperty(value = "联系人姓名")
     private String linkName;
 
     /**
      * 证件号
      * isNullAble:1,defaultVal:
      */
+    @ApiModelProperty(value = "证件号")
     private String idNum;
 
     /**
      * QQ
      * isNullAble:1,defaultVal:
      */
+    @ApiModelProperty(value = "QQ")
     private String linkQq;
 
     /**
      * 账号状态，1-有效、0-无效
      * isNullAble:1,defaultVal:1
      */
+    @ApiModelProperty(value = "账号状态，可不传，默认是有效的")
     private Integer accountStatus;
 
     /**
      * 角色类型(1-超级管理员、2-普通账号)
      * isNullAble:1,defaultVal:1
      */
+    @ApiModelProperty(value = "角色类型，1-超级管理员、2-普通管理员")
     private Integer roleType;
 
     /**
      * 账号所属的系统，1-管理端、2-官网web
      * isNullAble:1,defaultVal:1
      */
+    @ApiModelProperty(value = "账号所属系统，1-管理端、2-官网web，默认1")
     private Integer belongSystem;
 
     /**
      * 创建时间
      * isNullAble:0,defaultVal:CURRENT_TIMESTAMP
      */
+    @ApiModelProperty(value = "账号创建时间，由后台生成，yyyy-MM-dd HH:mm:ss格式")
     private String gmtCreate;
 
     /**
      * 修改时间
      * isNullAble:0,defaultVal:CURRENT_TIMESTAMP
      */
+    @ApiModelProperty(value = "账号最近修改时间，由后台生成，yyyy-MM-dd HH:mm:ss格式")
     private String gmtModified;
 
     public Long getId() {
@@ -113,11 +130,11 @@ public class Account implements Serializable {
         this.accountName = accountName;
     }
 
-    public Integer getMobilePhone() {
+    public Long getMobilePhone() {
         return mobilePhone;
     }
 
-    public void setMobilePhone(Integer mobilePhone) {
+    public void setMobilePhone(Long mobilePhone) {
         this.mobilePhone = mobilePhone;
     }
 

@@ -3,7 +3,7 @@ package com.hx.domain;
 import java.io.Serializable;
 
 /**
- * @author
+ * @author hch
  */
 public class ArticleKind implements Serializable {
 

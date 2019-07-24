@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @author
+ * @author hch
  */
 public class OperateRecord implements Serializable {
 

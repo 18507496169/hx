@@ -1,11 +1,14 @@
 package com.hx.domain;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
-import java.util.Date;
 
 /**
- * @author
+ * @author hch
  */
+@ApiModel(value = "网站访问PV记录")
 public class PageVisitRecord implements Serializable {
 
     private static final long serialVersionUID = 1563948520146L;
@@ -22,48 +25,56 @@ public class PageVisitRecord implements Serializable {
      * 当前日期，格式：yyyyMMdd
      * isNullAble:0
      */
-    private Date curDate;
+    @ApiModelProperty(value = "当前日期，后端生成")
+    private String curDate;
 
     /**
      * 用户ID(访问用户唯一标识)
      * isNullAble:0
      */
+    @ApiModelProperty(value = "用户ID(访问用户唯一标识)")
     private String userId;
 
     /**
      * 访问的IP
      * isNullAble:0,defaultVal:
      */
+    @ApiModelProperty(value = "访问的IP，由后端从header中获取")
     private String visitIp;
 
     /**
      * 访问的userAgent信息
      * isNullAble:0,defaultVal:
      */
+    @ApiModelProperty(value = "访问的userAgent信息，由后端从header中获取")
     private String userAgent;
 
     /**
      * 访问的页面ID
      * isNullAble:0,defaultVal:0
      */
+    @ApiModelProperty(value = "访问的页面ID")
     private Integer pageId;
 
     /**
      * 访问的文章ID
      * isNullAble:0,defaultVal:0
      */
+    @ApiModelProperty(value = "访问的文章ID")
     private Integer articleId;
 
     /**
      * 创建时间
      * isNullAble:0,defaultVal:CURRENT_TIMESTAMP
      */
+    @ApiModelProperty(value = "创建时间，后端生成")
     private String gmtCreate;
 
     /**
      * 修改时间
      * isNullAble:0,defaultVal:CURRENT_TIMESTAMP
      */
+    @ApiModelProperty(value = "修改时间，后端生成")
     private String gmtModified;
 
     public Long getId() {
@@ -74,11 +85,11 @@ public class PageVisitRecord implements Serializable {
         this.id = id;
     }
 
-    public Date getCurDate() {
+    public String getCurDate() {
         return curDate;
     }
 
-    public void setCurDate(Date curDate) {
+    public void setCurDate(String curDate) {
         this.curDate = curDate;
     }
 

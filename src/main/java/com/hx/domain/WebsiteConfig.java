@@ -1,10 +1,14 @@
 package com.hx.domain;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 
 /**
- * @author
+ * @author hch
  */
+@ApiModel(value = "站点配置")
 public class WebsiteConfig implements Serializable {
 
     private static final long serialVersionUID = 1563948532672L;
@@ -21,66 +25,77 @@ public class WebsiteConfig implements Serializable {
      * 站点名称
      * isNullAble:0
      */
+    @ApiModelProperty(value = "站点名称")
     private String siteName;
 
     /**
      * 站点域名
      * isNullAble:0
      */
+    @ApiModelProperty(value = "站点域名")
     private String siteDomain;
 
     /**
      * 邮箱
      * isNullAble:1,defaultVal:
      */
+    @ApiModelProperty(value = "邮箱")
     private String email;
 
     /**
      * 缓存状态，1-缓存、0-不缓存
      * isNullAble:1,defaultVal:1
      */
+    @ApiModelProperty(value = "缓存状态，1-缓存、0-不缓存")
     private Integer cookieStatus;
 
     /**
      * 静态首页，1-生成、0-不生成
      * isNullAble:1,defaultVal:1
      */
+    @ApiModelProperty(value = "静态首页，1-生成、0-不生成")
     private Integer staticIndexStatus;
 
     /**
      * 备案信息
      * isNullAble:1,defaultVal:
      */
+    @ApiModelProperty(value = "备案信息")
     private String beianInfo;
 
     /**
      * 版本信息
      * isNullAble:1,defaultVal:
      */
+    @ApiModelProperty(value = "版本信息")
     private String versionInfo;
 
     /**
      * 统计代码
      * isNullAble:1
      */
+    @ApiModelProperty(value = "统计代码")
     private String staticCode;
 
     /**
      * 是否删除，1-是、0-否
      * isNullAble:1,defaultVal:0
      */
+    @ApiModelProperty(value = "是否删除，1-是、0-否(暂时无用)")
     private Integer isDeleted;
 
     /**
      * 创建时间
      * isNullAble:0,defaultVal:CURRENT_TIMESTAMP
      */
+    @ApiModelProperty(value = "创建时间，后端生成，yyyy-MM-dd HH:mm:ss格式")
     private String gmtCreate;
 
     /**
      * 修改时间
      * isNullAble:0,defaultVal:CURRENT_TIMESTAMP
      */
+    @ApiModelProperty(value = "修改时间，后端生成，yyyy-MM-dd HH:mm:ss格式")
     private String gmtModified;
 
     public Long getId() {

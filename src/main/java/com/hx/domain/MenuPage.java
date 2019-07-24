@@ -1,74 +1,87 @@
 package com.hx.domain;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 
 /**
- * @author
+ * @author hch
  */
+@ApiModel(value = "单页管理")
 public class MenuPage implements Serializable {
 
     private static final long serialVersionUID = 1563948512057L;
-
 
     /**
      * 主键
      * <p>
      * isNullAble:0
      */
+    @ApiModelProperty(value = "页面ID，更新、查询、删除的时候需要传入该ID")
     private Long id;
 
     /**
      * 文章分类栏目ID
      * isNullAble:0
      */
+    @ApiModelProperty(value = "文章分类栏目ID")
     private Long kindId;
 
     /**
      * 页面名称
      * isNullAble:0
      */
+    @ApiModelProperty(value = "页面名称")
     private String pageName;
 
     /**
      * 页面关键词，多个用逗号分隔
      * isNullAble:1,defaultVal:
      */
+    @ApiModelProperty(value = "页面关键词，多个用逗号分隔")
     private String pageKeyWord;
 
     /**
      * 页面描述
      * isNullAble:1,defaultVal:
      */
+    @ApiModelProperty(value = "页面描述")
     private String pageDesc;
 
     /**
      * 页面图片URL，多个用逗号分隔
      * isNullAble:1,defaultVal:
      */
+    @ApiModelProperty(value = "页面图片URL，多个用逗号分隔")
     private String pageImg;
 
     /**
      * 页面内容
      * isNullAble:1
      */
+    @ApiModelProperty(value = "页面内容")
     private String pageContent;
 
     /**
      * 页面模板
      * isNullAble:1,defaultVal:
      */
+    @ApiModelProperty(value = "页面模板")
     private String pageTemplate;
 
     /**
      * 页面排序
      * isNullAble:1,defaultVal:0
      */
+    @ApiModelProperty(value = "页面排序(值越大排序越靠前，若排序值一样，则按ID排序)")
     private Integer pageSort;
 
     /**
      * 展示状态,1-展示、0-不展示
      * isNullAble:1,defaultVal:1
      */
+    @ApiModelProperty(value = "展示状态,1-展示、0-不展示")
     private Integer displayStatus;
 
     /**
@@ -81,12 +94,14 @@ public class MenuPage implements Serializable {
      * 创建时间
      * isNullAble:0,defaultVal:CURRENT_TIMESTAMP
      */
+    @ApiModelProperty(value = "页面创建时间，由后端生成，yyyy-MM-dd HH:mm:ss格式")
     private String gmtCreate;
 
     /**
      * 修改时间
      * isNullAble:0,defaultVal:CURRENT_TIMESTAMP
      */
+    @ApiModelProperty(value = "页面最近修改时间，由后端生成，yyyy-MM-dd HH:mm:ss格式")
     private String gmtModified;
 
     public Long getId() {

@@ -1,10 +1,14 @@
 package com.hx.domain;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 
 /**
- * @author
+ * @author hch
  */
+@ApiModel(value = "SEO配置")
 public class SeoConfig implements Serializable {
 
     private static final long serialVersionUID = 1563948524472L;
@@ -21,36 +25,42 @@ public class SeoConfig implements Serializable {
      * SEO标题
      * isNullAble:0
      */
+    @ApiModelProperty(value = "SEO标题")
     private String seoTitle;
 
     /**
      * SEO关键字，多个用逗号分隔
      * isNullAble:0
      */
+    @ApiModelProperty(value = "SEO关键字，多个用逗号分隔")
     private String seoKeyWord;
 
     /**
      * SEO描述
      * isNullAble:1,defaultVal:
      */
+    @ApiModelProperty(value = "SEO描述")
     private String seoDesc;
 
     /**
      * 是否删除，1-是、0-否
      * isNullAble:1,defaultVal:0
      */
+    @ApiModelProperty(value = "是否删除，1-是、0-否(暂时无用)")
     private Integer isDeleted;
 
     /**
      * 创建时间
      * isNullAble:0,defaultVal:CURRENT_TIMESTAMP
      */
+    @ApiModelProperty(value = "创建时间，后端生成，yyyy-MM-dd HH:mm:ss格式")
     private String gmtCreate;
 
     /**
      * 修改时间
      * isNullAble:0,defaultVal:CURRENT_TIMESTAMP
      */
+    @ApiModelProperty(value = "最近修改时间，后端生成，yyyy-MM-dd HH:mm:ss格式")
     private String gmtModified;
 
     public Long getId() {
