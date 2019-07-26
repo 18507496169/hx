@@ -34,7 +34,7 @@ public class PageVisitStatistics implements Serializable {
      * 星期(1~7)
      * isNullAble:0,defaultVal:0
      */
-    @ApiModelProperty(value = "星期数(1~7)")
+    @ApiModelProperty(value = "星期数(1~7)", example = "1")
     private Integer weekDays;
 
     public String getCurDate() {

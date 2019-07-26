@@ -19,7 +19,7 @@ public class Account implements Serializable {
      * <p>
      * isNullAble:0
      */
-    @ApiModelProperty(value = "账号ID，更新、查询、删除的时候需要传入该ID")
+    @ApiModelProperty(value = "账号ID，更新、查询、删除的时候需要传入该ID", example = "1")
     private Long id;
 
     /**
@@ -40,7 +40,7 @@ public class Account implements Serializable {
      * 手机号
      * isNullAble:0
      */
-    @ApiModelProperty(value = "手机号")
+    @ApiModelProperty(value = "手机号", example = "13123213213")
     private Long mobilePhone;
 
     /**
@@ -75,21 +75,21 @@ public class Account implements Serializable {
      * 账号状态，1-有效、0-无效
      * isNullAble:1,defaultVal:1
      */
-    @ApiModelProperty(value = "账号状态，可不传，默认是有效的")
+    @ApiModelProperty(value = "账号状态，可不传，默认是有效的", example = "1")
     private Integer accountStatus;
 
     /**
      * 角色类型(1-超级管理员、2-普通账号)
      * isNullAble:1,defaultVal:1
      */
-    @ApiModelProperty(value = "角色类型，1-超级管理员、2-普通管理员")
+    @ApiModelProperty(value = "角色类型，1-超级管理员、2-普通管理员", example = "1")
     private Integer roleType;
 
     /**
      * 账号所属的系统，1-管理端、2-官网web
      * isNullAble:1,defaultVal:1
      */
-    @ApiModelProperty(value = "账号所属系统，1-管理端、2-官网web，默认1")
+    @ApiModelProperty(value = "账号所属系统，1-管理端、2-官网web，默认1", example = "1")
     private Integer belongSystem;
 
     /**

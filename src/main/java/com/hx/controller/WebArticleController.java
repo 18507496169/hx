@@ -54,8 +54,8 @@ public class WebArticleController {
 
     @ApiOperation(value = "文章列表查询(可查询所有)", httpMethod = "GET", notes = "单页列表查询", response = WebArticle.class)
     @RequestMapping(value = "pageQuery", method = RequestMethod.GET)
-    @ApiImplicitParams(value = {@ApiImplicitParam(name = "currentPage", required = true, value = "当前页(默认1)", dataType = "integer", paramType = "query"),
-            @ApiImplicitParam(name = "pageSize", required = true, value = "每页大小(默认20，若想查询所有则该字段传入-1)", dataType = "integer", paramType = "query")})
+    @ApiImplicitParams(value = {@ApiImplicitParam(name = "currentPage", required = true, value = "当前页(默认1)", dataType = "integer", paramType = "query", example = "1"),
+            @ApiImplicitParam(name = "pageSize", required = true, value = "每页大小(默认20，若想查询所有则该字段传入-1)", dataType = "integer", paramType = "query", example = "1")})
     public PageResult<WebArticle> pageQuery(@ModelAttribute @RequestParam Integer currentPage, @ModelAttribute @RequestParam Integer pageSize) {
         //todo
         return new PageResult(0, Lists.newArrayList(new WebArticle()), 20);
@@ -63,7 +63,7 @@ public class WebArticleController {
 
     @ApiOperation(value = "查询文章详情", httpMethod = "GET", notes = "查询文章详情", response = WebArticle.class)
     @RequestMapping(value = "queryById", method = RequestMethod.GET)
-    @ApiImplicitParams(value = {@ApiImplicitParam(name = "id", required = true, value = "文章ID", dataType = "long", paramType = "query")})
+    @ApiImplicitParams(value = {@ApiImplicitParam(name = "id", required = true, value = "文章ID", dataType = "long", paramType = "query", example = "1")})
     public WebArticle queryById(@ModelAttribute @RequestParam Long id) {
         //todo
         return new WebArticle();

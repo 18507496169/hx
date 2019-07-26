@@ -19,6 +19,7 @@ public class SeoConfig implements Serializable {
      * <p>
      * isNullAble:0
      */
+    @ApiModelProperty(value = "ID", example = "1")
     private Long id;
 
     /**
@@ -46,7 +47,7 @@ public class SeoConfig implements Serializable {
      * 是否删除，1-是、0-否
      * isNullAble:1,defaultVal:0
      */
-    @ApiModelProperty(value = "是否删除，1-是、0-否(暂时无用)")
+    @ApiModelProperty(value = "是否删除，1-是、0-否(暂时无用)", example = "1")
     private Integer isDeleted;
 
     /**

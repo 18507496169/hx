@@ -19,6 +19,7 @@ public class WebsiteConfig implements Serializable {
      * <p>
      * isNullAble:0
      */
+    @ApiModelProperty(value = "id", example = "1")
     private Long id;
 
     /**
@@ -46,14 +47,14 @@ public class WebsiteConfig implements Serializable {
      * 缓存状态，1-缓存、0-不缓存
      * isNullAble:1,defaultVal:1
      */
-    @ApiModelProperty(value = "缓存状态，1-缓存、0-不缓存")
+    @ApiModelProperty(value = "缓存状态，1-缓存、0-不缓存", example = "1")
     private Integer cookieStatus;
 
     /**
      * 静态首页，1-生成、0-不生成
      * isNullAble:1,defaultVal:1
      */
-    @ApiModelProperty(value = "静态首页，1-生成、0-不生成")
+    @ApiModelProperty(value = "静态首页，1-生成、0-不生成", example = "1")
     private Integer staticIndexStatus;
 
     /**
@@ -81,7 +82,7 @@ public class WebsiteConfig implements Serializable {
      * 是否删除，1-是、0-否
      * isNullAble:1,defaultVal:0
      */
-    @ApiModelProperty(value = "是否删除，1-是、0-否(暂时无用)")
+    @ApiModelProperty(value = "是否删除，1-是、0-否(暂时无用)", example = "1")
     private Integer isDeleted;
 
     /**

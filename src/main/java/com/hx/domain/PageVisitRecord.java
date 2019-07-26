@@ -19,6 +19,7 @@ public class PageVisitRecord implements Serializable {
      * <p>
      * isNullAble:0
      */
+    @ApiModelProperty(value = "主键ID", example = "1")
     private Long id;
 
     /**
@@ -53,14 +54,14 @@ public class PageVisitRecord implements Serializable {
      * 访问的页面ID
      * isNullAble:0,defaultVal:0
      */
-    @ApiModelProperty(value = "访问的页面ID")
+    @ApiModelProperty(value = "访问的页面ID", example = "1")
     private Integer pageId;
 
     /**
      * 访问的文章ID
      * isNullAble:0,defaultVal:0
      */
-    @ApiModelProperty(value = "访问的文章ID")
+    @ApiModelProperty(value = "访问的文章ID", example = "1")
     private Integer articleId;
 
     /**
