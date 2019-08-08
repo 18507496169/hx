@@ -9,4 +9,5 @@ public interface WebsiteConfigMapper {
 
     int updateHxWebsiteConfig(WebsiteConfig object);
 
+    WebsiteConfig selectWebSiteConfig();
 }

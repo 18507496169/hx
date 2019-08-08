@@ -65,12 +65,8 @@
             <if test="isDeleted!=null">
                 `is_deleted`,
             </if>
-            <if test="gmtCreate!=null">
-                `gmt_create`,
-            </if>
-            <if test="gmtModified!=null">
-                `gmt_modified`,
-            </if>
+            `gmt_create`,
+            `gmt_modified`,
         </trim>
         )
         VALUES
@@ -115,12 +111,8 @@
             <if test="isDeleted!=null">
                 #{isDeleted},
             </if>
-            <if test="gmtCreate!=null">
-                #{gmtCreate},
-            </if>
-            <if test="gmtModified!=null">
-                #{gmtModified},
-            </if>
+            now(),
+            now(),
         </trim>
         )
     </insert>
@@ -178,5 +170,21 @@
             `id` = #{id} and
         </trim>
     </update>
+
+    <delete id="deleteByIds">
+        delete from hx_web_article
+        where id in
+        <foreach collection="ids" open="(" separator="," close=")" item="item">
+            #{item}
+        </foreach>
+    </delete>
+
+    <select id="countAll" resultType="java.lang.Integer">
+        select count(1) from hx_web_article
+    </select>
+
+    <select id="pageQueryAll" resultType="com.hx.domain.WebArticle">
+        SELECT * from hx_web_article limit #{start},#{limit}
+    </select>
 
 </mapper>

@@ -56,12 +56,8 @@
             <if test="belongSystem!=null">
                 `belong_system`,
             </if>
-            <if test="gmtCreate!=null">
-                `gmt_create`,
-            </if>
-            <if test="gmtModified!=null">
-                `gmt_modified`,
-            </if>
+            `gmt_create`,
+            `gmt_modified`,
         </trim>
         )
         VALUES
@@ -100,12 +96,8 @@
             <if test="belongSystem!=null">
                 #{belongSystem},
             </if>
-            <if test="gmtCreate!=null">
-                #{gmtCreate},
-            </if>
-            <if test="gmtModified!=null">
-                #{gmtModified},
-            </if>
+            now(),
+            now(),
         </trim>
         )
     </insert>
@@ -157,5 +149,29 @@
             `id` = #{id} and
         </trim>
     </update>
+
+    <delete id="deleteByIds">
+        delete from hx_account
+        where id in
+        <foreach collection="ids" open="(" separator="," close=")" item="item">
+            #{item}
+        </foreach>
+    </delete>
+
+    <select id="selectByName" resultType="com.hx.domain.Account">
+        select * from hx_account where `account_name` = #{accountName}
+    </select>
+
+    <select id="pageQueryAll" resultType="com.hx.domain.Account">
+        select * from hx_account limit #{start},#{limit}
+    </select>
+
+    <select id="countAll" resultType="java.lang.Integer">
+        select count(1) from hx_account
+    </select>
+
+    <select id="selectById" resultType="com.hx.domain.Account">
+        select * from hx_account where id = #{id}
+    </select>
 
 </mapper>

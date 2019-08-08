@@ -9,4 +9,5 @@ public interface SeoConfigMapper {
 
     int updateHxSeoConfig(SeoConfig object);
 
+    SeoConfig selectSeoConfig();
 }

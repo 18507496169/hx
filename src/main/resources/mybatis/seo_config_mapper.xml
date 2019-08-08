@@ -33,12 +33,8 @@
             <if test="isDeleted!=null">
                 `is_deleted`,
             </if>
-            <if test="gmtCreate!=null">
                 `gmt_create`,
-            </if>
-            <if test="gmtModified!=null">
                 `gmt_modified`,
-            </if>
         </trim>
         )
         VALUES
@@ -59,12 +55,8 @@
             <if test="isDeleted!=null">
                 #{isDeleted},
             </if>
-            <if test="gmtCreate!=null">
                 #{gmtCreate},
-            </if>
-            <if test="gmtModified!=null">
                 #{gmtModified},
-            </if>
         </trim>
         )
     </insert>
@@ -98,5 +90,9 @@
             `id` = #{id} and
         </trim>
     </update>
+
+    <select id="selectSeoConfig" resultType="com.hx.domain.SeoConfig">
+        SELECT * from hx_seo_config limit 1
+    </select>
 
 </mapper>
