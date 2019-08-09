@@ -40,12 +40,8 @@
             <if test="articleId!=null">
                 `article_id`,
             </if>
-            <if test="gmtCreate!=null">
                 `gmt_create`,
-            </if>
-            <if test="gmtModified!=null">
                 `gmt_modified`,
-            </if>
         </trim>
         )
         VALUES
@@ -72,12 +68,8 @@
             <if test="articleId!=null">
                 #{articleId},
             </if>
-            <if test="gmtCreate!=null">
-                #{gmtCreate},
-            </if>
-            <if test="gmtModified!=null">
-                #{gmtModified},
-            </if>
+                now(),
+                now(),
         </trim>
         )
     </insert>
@@ -117,5 +109,15 @@
             `id` = #{id} and
         </trim>
     </update>
+
+    <select id="sumLatestWeekData" resultType="com.hx.domain.PageVisitStatistics">
+        select
+        cur_date,
+        count(id) as visitPv,
+        count(DISTINCT(user_id)) as visitUv
+        from hx_page_visit_record
+        where cur_date BETWEEN #{startDate} and #{endDate}
+        group by cur_date
+    </select>
 
 </mapper>
