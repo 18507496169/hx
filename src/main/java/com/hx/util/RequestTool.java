@@ -4,6 +4,10 @@ import org.springframework.util.StringUtils;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -11,6 +15,9 @@ import java.util.regex.Pattern;
 
 public class RequestTool {
 
+    public static String INTRANET_IP = getIntranetIp(); // 内网IP
+
+    public static String INTERNET_IP = getInternetIp(); // 外网IP
 
     private final static String UNKNOWN = "unknown";
     private final static String IPHONE = "iphone";
@@ -297,6 +304,49 @@ public class RequestTool {
         }
         ua = ua.toLowerCase();
         return ua.contains(ANDROID);
+    }
+
+    /**
+     * 获得内网IP
+     *
+     * @return 内网IP
+     */
+    private static String getIntranetIp() {
+        try {
+            return InetAddress.getLocalHost().getHostAddress();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 获得外网IP
+     *
+     * @return 外网IP
+     */
+    private static String getInternetIp() {
+        try {
+            Enumeration<NetworkInterface> networks = NetworkInterface.getNetworkInterfaces();
+            InetAddress ip = null;
+            Enumeration<InetAddress> addrs;
+            while (networks.hasMoreElements()) {
+                addrs = networks.nextElement().getInetAddresses();
+                while (addrs.hasMoreElements()) {
+                    ip = addrs.nextElement();
+                    if (ip != null
+                            && ip instanceof Inet4Address
+                            && ip.isSiteLocalAddress()
+                            && !ip.getHostAddress().equals(INTRANET_IP)) {
+                        return ip.getHostAddress();
+                    }
+                }
+            }
+
+            // 如果没有外网IP，就返回内网IP
+            return INTRANET_IP;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

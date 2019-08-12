@@ -1,12 +1,10 @@
 package com.hx.controller;
 
 import com.hx.util.HxException;
+import com.hx.util.RequestTool;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
@@ -44,33 +42,30 @@ public class UploadController {
             throw new HxException("上传的图片文件名为空");
         }
 
-        String returnUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/upload/img/";//存储路径
+        String returnUrl = "upload/img";//存储路径
 
-//        String path = request.getSession().getServletContext().getRealPath("upload/img/"); //文件存储位置
-
-        String fileSuffix  = fileName.substring(fileName.lastIndexOf("."), fileName.length());//文件后缀
+        String fileSuffix = fileName.substring(fileName.lastIndexOf("."), fileName.length());//文件后缀
 
         fileName = System.currentTimeMillis() + "_" + new Random().nextInt(10000) + fileSuffix;//新的文件名
 
-        //先判断文件是否存在
-        String dateStr = DateTime.now().toString("yyyyMMdd");
-
         //获取文件夹路径
-        File file1 = new File(returnUrl + "/" + dateStr);
+        File parentDirFile = new File(returnUrl);
 
-        //如果文件夹不存在则创建
-        if (!file1.exists() && !file1.isDirectory()) {
-            file1.mkdir();
+        //先判断文件是否存在,如果文件夹不存在则创建
+        if (!parentDirFile.exists() && !parentDirFile.isDirectory()) {
+            parentDirFile.mkdir();
         }
 
+        String fullFileName = parentDirFile.getAbsolutePath() + "/" + fileName;
+
         //将图片存入文件夹
-        File targetFile = new File(file1, fileName);
+        File targetFile = new File(fullFileName);
 
         try {
             //将上传的文件写到服务器上指定的文件。
             file.transferTo(targetFile);
 
-            return returnUrl + dateStr + "/" + fileName;//返回存储路径
+            return "http://139.129.6.52/img/" + fileName;//返回存储路径
         } catch (Exception e) {
             logger.error("upload image exception", e);
             throw new HxException("系统异常，图片上传失败");
