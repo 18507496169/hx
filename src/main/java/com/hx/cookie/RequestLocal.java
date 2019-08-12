@@ -3,6 +3,7 @@ package com.hx.cookie;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.hx.domain.Account;
+import com.hx.util.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
@@ -78,7 +79,7 @@ public class RequestLocal {
                 if (cookieJson != null) {
                     JSONObject jsonObject = JSON.parseObject(cookieJson);
                     if (System.currentTimeMillis() - jsonObject.getLong(LocalCookie.LOGIN_TIME) < DAY_OF_MILLISECOND) {
-                        account = JSON.parseObject(jsonObject.getString(LocalCookie.ACCOUNT_KEY), Account.class);
+                        account = JSON.parseObject(Base64.decode(jsonObject.getString(LocalCookie.ACCOUNT_KEY)), Account.class);
                     } else {
                         // 24小时过期, 删除cookie
                         LocalCookie.deleteCookie(LocalCookie.ACCOUNT_KEY);

@@ -5,12 +5,12 @@ import com.hx.domain.Account;
 import com.hx.mapper.AccountMapper;
 import com.hx.util.DateUtils;
 import com.hx.util.HxException;
+import com.hx.util.MD5;
 import com.hx.util.PageResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.apache.tomcat.util.security.MD5Encoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +52,7 @@ public class AccountController {
             throw new HxException("用户名已存在");
         }
         if (account.getPassword() != null) {
-            account.setPassword(MD5Encoder.encode(account.getPassword().getBytes()));
+            account.setPassword(MD5.md5(account.getPassword()));
         }
         return accountMapper.insertHxAccount(account) > 0;
     }
@@ -64,7 +64,7 @@ public class AccountController {
             throw new HxException("用户ID不能为空");
         }
         if (account.getPassword() != null) {
-            account.setPassword(MD5Encoder.encode(account.getPassword().getBytes()));
+            account.setPassword(MD5.md5(account.getPassword()));
         }
         account.setGmtModified(DateUtils.getSecondStr(new Date()));
         accountMapper.updateHxAccount(account);

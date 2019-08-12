@@ -4,9 +4,9 @@ import com.hx.cookie.LocalCookie;
 import com.hx.domain.Account;
 import com.hx.mapper.AccountMapper;
 import com.hx.util.HxException;
+import com.hx.util.MD5;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.tomcat.util.security.MD5Encoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +49,7 @@ public class LoginController {
             throw new HxException("用户不存在");
         }
 
-        if (!MD5Encoder.encode(account.getPassword().getBytes()).equals(accountInfo.getPassword())) {
+        if (!MD5.md5(account.getPassword()).equals(accountInfo.getPassword())) {
             throw new HxException("用户密码不正确");
         }
 

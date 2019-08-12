@@ -1,7 +1,9 @@
 package com.hx.cookie;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.hx.domain.Account;
+import com.hx.util.Base64;
 
 import javax.servlet.http.Cookie;
 
@@ -66,7 +68,7 @@ public class LocalCookie {
         //用户名
         RequestLocal.get().getResponse().addCookie(createCookie(LocalCookie.ACCOUNT_NAME, account.getAccountName()));
         //用户信息
-        RequestLocal.get().getResponse().addCookie(createCookie(LocalCookie.ACCOUNT_KEY, JSON.toJSONString(account)));
+        RequestLocal.get().getResponse().addCookie(createCookie(LocalCookie.ACCOUNT_KEY, Base64.encode(JSON.toJSONString(account)).replace("\n", "")));
     }
 
     private static void setDomain(Cookie cookie) {

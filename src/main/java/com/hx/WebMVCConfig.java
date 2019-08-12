@@ -1,8 +1,9 @@
 package com.hx;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
  * Created by huangch on 2019/7/23 19:17
@@ -10,16 +11,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  *
  * @since JDK 1.6
  */
-//@Configuration
-//public class WebMVCConfig implements WebMvcConfigurer {
-//
-//    @Override
-//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        registry.addResourceHandler("swagger-ui.html")
-//                .addResourceLocations("classpath:/META-INF/resources/");
-//        registry.addResourceHandler("/webjars/**")
-//                .addResourceLocations("classpath:/META-INF/resources/webjars/");
-//
-//    }
-//
-//}
+@Configuration
+public class WebMVCConfig extends WebMvcConfigurerAdapter {
+
+    @Autowired
+    private LoginInterceptor loginInterceptor;
+
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(loginInterceptor).addPathPatterns("/**");
+    }
+
+}

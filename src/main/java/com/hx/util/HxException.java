@@ -13,7 +13,7 @@ public class HxException extends Exception {
     private String errorMassage;
 
     public HxException(String errorMassage) {
-        super();
+        super(errorMassage);
         this.errorMassage = errorMassage;
     }
 

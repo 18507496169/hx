@@ -5,6 +5,7 @@ import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,6 +19,7 @@ import java.util.List;
  *
  * @since JDK 1.6
  */
+@Component
 public class LoginInterceptor implements HandlerInterceptor, InitializingBean {
 
     private Logger log = LoggerFactory.getLogger(LoginInterceptor.class);
